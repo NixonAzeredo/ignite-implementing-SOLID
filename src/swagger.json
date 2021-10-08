@@ -1,0 +1,308 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "SOLID",
+        "description": "Prove of concept to SOLID",
+        "version": "0.0.1",
+        "contact": {
+            "email": "nixonazeredo@gmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create",
+                "description": "Create a new user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Fulano"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "fulanodetal@mail.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Fulano"
+                                        },
+                                        "id": {
+                                            "type": "string",
+                                            "example": "48ab628c-2a8a-4c29-b297-dac0e457b90d"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "string",
+                                            "example": "2021-10-08T14:46:32.163Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "string",
+                                            "example": "2021-10-08T14:46:32.163Z"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "fulado@empresa.com"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "List",
+                "description": "Get list of users",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "header",
+                        "description": "ID of user to return",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "admin": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Bertano"
+                                            },
+                                            "id": {
+                                                "type": "string",
+                                                "example": "55bc215w-2a8a-4c29-b297-dac0e457b90d"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "string",
+                                                "example": "2020-10-08T14:46:32.163Z"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "string",
+                                                "example": "2019-10-08T14:46:32.163Z"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "bertano@empresa.com"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Profile",
+                "description": "Querying the User Profile",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "ID of user to return",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Bertano"
+                                        },
+                                        "id": {
+                                            "type": "string",
+                                            "example": "55bc215w-2a8a-4c29-b297-dac0e457b90d"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "string",
+                                            "example": "2020-10-08T14:46:32.163Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "string",
+                                            "example": "2019-10-08T14:46:32.163Z"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "bertano@empresa.com"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "fail operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user_id}/admin": {
+            "patch": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Admin Status",
+                "description": "Grant admin status",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "ID of user to return",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Ciclano"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "ciclano@mail.com"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "fail operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "User doesn't exist"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
