@@ -20,7 +20,6 @@ describe("UsersRepository", () => {
       admin: false,
     });
     expect(validate(user.id)).toBe(true);
-    console.log(user);
     expect(user.created_at).toBeInstanceOf(Date);
     expect(user.updated_at).toBeInstanceOf(Date);
   });
